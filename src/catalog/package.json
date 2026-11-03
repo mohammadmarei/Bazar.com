@@ -1,0 +1,13 @@
+{
+  "name": "bazar-catalog",
+  "version": "1.0.0",
+  "description": "Bazar.com catalog service",
+  "main": "catalog.js",
+  "scripts": {
+    "start": "node catalog.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
