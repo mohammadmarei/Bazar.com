@@ -1,0 +1,14 @@
+{
+  "name": "bazar-frontend",
+  "version": "1.0.0",
+  "description": "Bazar.com frontend service",
+  "main": "frontend.js",
+  "scripts": {
+    "start": "node frontend.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.8.4",
+    "express": "^5.1.0"
+  }
+}
