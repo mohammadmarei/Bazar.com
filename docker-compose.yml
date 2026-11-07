@@ -1,0 +1,44 @@
+# one container for each service
+# the json files are mounted so the data stays after restarting
+services:
+  catalog:
+    build: ./src/catalog
+    container_name: catalog
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./src/catalog/catalog.json:/app/catalog.json
+    networks:
+      - bazar-net
+
+  order:
+    build: ./src/order
+    container_name: order
+    ports:
+      - "3000:3000"
+    environment:
+      - CATALOG_URL=http://catalog:4000
+    volumes:
+      - ./src/order/orders.json:/app/orders.json
+    networks:
+      - bazar-net
+    depends_on:
+      - catalog
+
+  frontend:
+    build: ./src/front-end
+    container_name: frontend
+    ports:
+      - "5000:5000"
+    environment:
+      - CATALOG_URL=http://catalog:4000
+      - ORDER_URL=http://order:3000
+    networks:
+      - bazar-net
+    depends_on:
+      - catalog
+      - order
+
+networks:
+  bazar-net:
+    driver: bridge
