@@ -1,0 +1,231 @@
+Output of: node client/client.js demo
+
+===== CLIENT
+
+Books about "distributed systems":
+  1. How to get a good grade in DOS in 40 minutes a day
+  2. RPCs for Noobs
+
+Books about "undergraduate school":
+  3. Xen and the Art of Surviving Undergraduate School
+  4. Cooking for the Impatient Undergrad
+
+Book #2:
+  title:    RPCs for Noobs
+  in stock: 5
+  price:    $50
+
+Buying book #2...
+bought book RPCs for Noobs (4 left)
+
+Book #2:
+  title:    RPCs for Noobs
+  in stock: 4
+  price:    $50
+
+Update book #4 (quantity 3):
+  Cooking for the Impatient Undergrad -> quantity: 3, price: $15
+
+Sending 5 purchases for book #4 at the same time...
+bought book Cooking for the Impatient Undergrad (2 left)
+bought book Cooking for the Impatient Undergrad (1 left)
+bought book Cooking for the Impatient Undergrad (0 left)
+purchase failed: Cooking for the Impatient Undergrad is out of stock
+purchase failed: Cooking for the Impatient Undergrad is out of stock
+done: 3 bought, 2 failed
+
+Book #4:
+  title:    Cooking for the Impatient Undergrad
+  in stock: 0
+  price:    $15
+
+Update book #4 (change 10):
+  Cooking for the Impatient Undergrad -> quantity: 10, price: $15
+
+Update book #4 (price 20):
+  Cooking for the Impatient Undergrad -> quantity: 10, price: $20
+
+Some wrong requests:
+
+Book #99:
+  error: Book not found
+purchase failed: Book not found
+
+Books about "cooking":
+  nothing found
+
+===== CATALOG SERVICE
+Catalog server is running on port 4000
+search "distributed systems": [
+  {
+    id: 1,
+    title: 'How to get a good grade in DOS in 40 minutes a day'
+  },
+  { id: 2, title: 'RPCs for Noobs' }
+]
+search "undergraduate school": [
+  { id: 3, title: 'Xen and the Art of Surviving Undergraduate School' },
+  { id: 4, title: 'Cooking for the Impatient Undergrad' }
+]
+info: {
+  id: 2,
+  title: 'RPCs for Noobs',
+  quantity: 5,
+  price: 50,
+  topic: 'distributed systems'
+}
+info: {
+  id: 2,
+  title: 'RPCs for Noobs',
+  quantity: 5,
+  price: 50,
+  topic: 'distributed systems'
+}
+updated: {
+  id: 2,
+  title: 'RPCs for Noobs',
+  quantity: 4,
+  price: 50,
+  topic: 'distributed systems'
+}
+info: {
+  id: 2,
+  title: 'RPCs for Noobs',
+  quantity: 4,
+  price: 50,
+  topic: 'distributed systems'
+}
+updated: {
+  id: 4,
+  title: 'Cooking for the Impatient Undergrad',
+  quantity: 3,
+  price: 15,
+  topic: 'undergraduate school'
+}
+info: {
+  id: 4,
+  title: 'Cooking for the Impatient Undergrad',
+  quantity: 3,
+  price: 15,
+  topic: 'undergraduate school'
+}
+updated: {
+  id: 4,
+  title: 'Cooking for the Impatient Undergrad',
+  quantity: 2,
+  price: 15,
+  topic: 'undergraduate school'
+}
+info: {
+  id: 4,
+  title: 'Cooking for the Impatient Undergrad',
+  quantity: 2,
+  price: 15,
+  topic: 'undergraduate school'
+}
+info: {
+  id: 4,
+  title: 'Cooking for the Impatient Undergrad',
+  quantity: 2,
+  price: 15,
+  topic: 'undergraduate school'
+}
+info: {
+  id: 4,
+  title: 'Cooking for the Impatient Undergrad',
+  quantity: 2,
+  price: 15,
+  topic: 'undergraduate school'
+}
+info: {
+  id: 4,
+  title: 'Cooking for the Impatient Undergrad',
+  quantity: 2,
+  price: 15,
+  topic: 'undergraduate school'
+}
+updated: {
+  id: 4,
+  title: 'Cooking for the Impatient Undergrad',
+  quantity: 1,
+  price: 15,
+  topic: 'undergraduate school'
+}
+updated: {
+  id: 4,
+  title: 'Cooking for the Impatient Undergrad',
+  quantity: 0,
+  price: 15,
+  topic: 'undergraduate school'
+}
+update: not enough stock for Cooking for the Impatient Undergrad
+update: not enough stock for Cooking for the Impatient Undergrad
+info: {
+  id: 4,
+  title: 'Cooking for the Impatient Undergrad',
+  quantity: 0,
+  price: 15,
+  topic: 'undergraduate school'
+}
+updated: {
+  id: 4,
+  title: 'Cooking for the Impatient Undergrad',
+  quantity: 10,
+  price: 15,
+  topic: 'undergraduate school'
+}
+updated: {
+  id: 4,
+  title: 'Cooking for the Impatient Undergrad',
+  quantity: 10,
+  price: 20,
+  topic: 'undergraduate school'
+}
+info: book 99 not found
+info: book 99 not found
+search "cooking": []
+
+===== ORDER SERVICE
+Order server is running on port 3000
+bought book RPCs for Noobs
+bought book Cooking for the Impatient Undergrad
+bought book Cooking for the Impatient Undergrad
+bought book Cooking for the Impatient Undergrad
+out of stock: Cooking for the Impatient Undergrad
+out of stock: Cooking for the Impatient Undergrad
+book 99 not found
+
+===== FRONTEND SERVICE
+Frontend server is running on port 5000
+search request: distributed systems
+found 2 books
+search request: undergraduate school
+found 2 books
+info request: 2
+{ title: 'RPCs for Noobs', quantity: 5, price: 50 }
+purchase request: 2
+bought book RPCs for Noobs
+info request: 2
+{ title: 'RPCs for Noobs', quantity: 4, price: 50 }
+purchase request: 4
+purchase request: 4
+purchase request: 4
+purchase request: 4
+purchase request: 4
+bought book Cooking for the Impatient Undergrad
+bought book Cooking for the Impatient Undergrad
+bought book Cooking for the Impatient Undergrad
+error 400: Cooking for the Impatient Undergrad is out of stock
+error 400: Cooking for the Impatient Undergrad is out of stock
+info request: 4
+{
+  title: 'Cooking for the Impatient Undergrad',
+  quantity: 0,
+  price: 15
+}
+info request: 99
+error 404: Book not found
+purchase request: 99
+error 404: Book not found
+search request: cooking
+found 0 books
